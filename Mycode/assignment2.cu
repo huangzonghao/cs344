@@ -129,9 +129,6 @@ void gaussian_blur(const unsigned char* const inputChannel,
   // the value is out of bounds), you should explicitly clamp the neighbor values you read
   // to be within the bounds of the image. If this is not clear to you, then please refer
   // to sequential reference solution for the exact clamping semantics you should follow.
-   if ( absolute_image_position_x >= numCols ||
-        absolute_image_position_y >= numRows )
-
 }
 
 //This kernel takes in an image represented as a uchar4 and splits
@@ -155,10 +152,6 @@ void separateChannels(const uchar4* const inputImageRGBA,
   // {
   //     return;
   // }
-        int idx = threadIdx.x + blockIdx.x * nowCols;
-        redChannel[idx] = inputImageRGBA[idx].x;
-        greenChannel[idx] = inputImageRGBA[idx].y;
-        blueChannel[idx] = inputImageRGBA[idx].z;
 }
 
 //This kernel takes in three color channels and recombines them
